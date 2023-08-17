@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .cash-register {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="cash-register">
+        <h1>Cash Register</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Item 1</td>
+                    <td>$5.00</td>
+                    <td class="quantity">2</td>
+                </tr>
+                <tr>
+                    <td>Item 2</td>
+                    <td>$10.00</td>
+                    <td class="quantity">1</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+        <h2>Total: $<span id="total">0.00</span></h2>
+        
+        <label for="cashGiven">Cash Given: $</label>
+        <input type="number" id="cashGiven" step="0.01">
+        
+        <button id="calculate">Calculate Change</button>
+        <h2>Change: $<span id="change">0.00</span></h2>
+    </div>
+
+    <script>
+        const calculateButton = document.getElementById("calculate");
+        const totalSpan = document.getElementById("total");
+        const cashGivenInput = document.getElementById("cashGiven");
+        const changeSpan = document.getElementById("change");
+
+        calculateButton.addEventListener("click", () => {
+            const rows = document.querySelectorAll("tbody tr");
+            let total = 0;
+
+            rows.forEach(row => {
+                const price = parseFloat(row.querySelector("td:nth-child(2)").textContent.slice(1));
+                const quantity = parseInt(row.querySelector(".quantity").textContent);
+                total += price * quantity;
+            });
+
+            totalSpan.textContent = total.toFixed(2);
+
+            const cashGiven = parseFloat(cashGivenInput.value);
+            const change = cashGiven - total;
+            changeSpan.textContent = change.toFixed(2);
+        });
+
+        const quantityCells = document.querySelectorAll(".quantity");
+        quantityCells.forEach(cell => {
+            const incrementButton = document.createElement("button");
+            incrementButton.textContent = "+";
+            const decrementButton = document.createElement("button");
+            decrementButton.textContent = "-";
+            const quantityInput = document.createElement("input");
+            quantityInput.type = "number";
+            quantityInput.value = cell.textContent;
+            quantityInput.min = "1";
+            quantityInput.style.width = "40px";
+            quantityInput.style.textAlign = "center";
+
+            incrementButton.addEventListener("click", () => {
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+                updateTotal();
+            });
+
+            decrementButton.addEventListener("click", () => {
+                if (parseInt(quantityInput.value) > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                    updateTotal();
+                }
+            });
+
+            quantityInput.addEventListener("input", () => {
+                updateTotal();
+            });
+
+            cell.textContent = "";
+            cell.appendChild(decrementButton);
+            cell.appendChild(quantityInput);
+            cell.appendChild(incrementButton);
+        });
+
+        function updateTotal() {
+            let total = 0;
+            quantityCells.forEach(cell => {
+                const price = parseFloat(cell.parentElement.querySelector("td:nth-child(2)").textContent.slice(1));
+                const quantity = parseInt(cell.querySelector("input").value);
+                total += price * quantity;
+            });
+            totalSpan.textContent = total.toFixed(2);
+
+            const cashGiven = parseFloat(cashGivenInput.value);
+            const change = cashGiven - total;
+            changeSpan.textContent = change.toFixed(2);
+        }
+    </script>
+</body>
+</html>
