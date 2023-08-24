@@ -91,28 +91,45 @@
             <label for="change">Change:</label>
             <input type="number" id="change" value="0" disabled>
         </div>
+        
+        <div class="items-count">
+            <h3>Items Count:</h3>
+            <ul id="itemsList"></ul>
+        </div>
     </div>
     
     <script>
-        const items = [];
+        const items = {};
         let totalAmount = 0;
         
         function addItem(itemName, itemPrice) {
-            items.push({ name: itemName, price: itemPrice });
+            if (!items[itemName]) {
+                items[itemName] = { count: 1, price: itemPrice };
+            } else {
+                items[itemName].count++;
+            }
             totalAmount += itemPrice;
             updateUI();
         }
         
         function deleteItem() {
-            if (items.length > 0) {
-                const deletedItem = items.pop();
-                totalAmount -= deletedItem.price;
-                updateUI();
+            let deletedItem = null;
+            for (const itemName in items) {
+                if (items[itemName].count > 0) {
+                    deletedItem = itemName;
+                    items[itemName].count--;
+                    totalAmount -= items[itemName].price;
+                    break;
+                }
             }
+            
+            updateUI();
         }
         
         function reset() {
-            items.length = 0;
+            for (const itemName in items) {
+                items[itemName].count = 0;
+            }
             totalAmount = 0;
             document.getElementById("payment").value = "";
             updateUI();
@@ -121,9 +138,25 @@
         function updateUI() {
             const amountInput = document.getElementById("amount");
             const totalInput = document.getElementById("total");
+            const itemsList = document.getElementById("itemsList");
             
-            amountInput.value = items.length;
+            let itemCount = 0;
+            for (const itemName in items) {
+                itemCount += items[itemName].count;
+            }
+            
+            amountInput.value = itemCount;
             totalInput.value = totalAmount;
+            
+            itemsList.innerHTML = "";
+            for (const itemName in items) {
+                const item = items[itemName];
+                if (item.count > 0) {
+                    const listItem = document.createElement("li");
+                    listItem.innerText = `${itemName}: ${item.count}`;
+                    itemsList.appendChild(listItem);
+                }
+            }
         }
         
         function calculateChange() {
