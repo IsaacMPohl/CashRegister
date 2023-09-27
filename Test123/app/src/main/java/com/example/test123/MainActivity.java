@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     int onTrayIncr = 0;
     int mainTrayIncr =0;
-    int sideItemIncr = 0;
+    int rollItemIncr = 0;
     int desertItemIncr = 0;
     int cookieItemIncr = 0 ;
     int soupItemIncr = 0;
@@ -22,10 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView mealItemDisTXT = findViewById(R.id.textView3);
         TextView onTrayItemDisTXT = findViewById(R.id.textView4);
-        TextView sideItemDisTxt = findViewById(R.id.textView5);
+        TextView rollitemDisTxt = findViewById(R.id.textView5);
         TextView desertItemDisTxT = findViewById(R.id.textView6);
         TextView cookieItemDisTxT = findViewById(R.id.textView14);
         TextView soupItemDisTXT = findViewById(R.id.textView21);
+        TextView totalPriceDisTXT = findViewById(R.id.textView2);
+        TextView disChangeBackTXT = findViewById(R.id.textView7);
+        EditText amountGivenTXT = findViewById(R.id.editTextText);
 
 
 
@@ -33,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         Button mainDelBTN = findViewById(R.id.button14);
         Button onTrayAddBTN = findViewById(R.id.button24);
         Button onTrayDelBTN = findViewById(R.id.button25);
-        Button sideItemAddBTN = findViewById(R.id.button28);
-        Button sideItemDelBTN = findViewById(R.id.button29);
+        Button rollItemAddBTN = findViewById(R.id.button28);
+        Button rollItemDelBTN = findViewById(R.id.button29);
         Button desertItemAddBTN = findViewById(R.id.button26);
         Button desertItemDelBTN = findViewById(R.id.button27);
         Button cookieItemAddBTN = findViewById(R.id.button3);
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Button soupItemAddBTN = findViewById(R.id.button2);
         Button soupItemDelBTN = findViewById(R.id.button5);
         Button resetBTN = findViewById(R.id.button);
+        Button calcBTN = findViewById(R.id.button6);
+
 
         mainAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total+=8;
+                totalPriceDisTXT.setText(Integer.toString(total));
 
 
             }
@@ -61,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total-=8;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -71,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 total+=5;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -81,26 +91,32 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 total-=5;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
-        sideItemAddBTN.setOnClickListener(new View.OnClickListener() {
+        rollItemAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                sideItemIncr++;
+                rollItemIncr++;
                 //outputTXT.setText(entree);
-                sideItemDisTxt.setText(Integer.toString(sideItemIncr));
-                total+=1;
+                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
+                total+=.5;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
-        sideItemDelBTN.setOnClickListener(new View.OnClickListener() {
+        rollItemDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                sideItemIncr--;
+                rollItemIncr--;
                 //outputTXT.setText(entree);
-                sideItemDisTxt.setText(Integer.toString(sideItemIncr));
-                total-=5;
+                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
+                total-=.5;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -110,7 +126,9 @@ public class MainActivity extends AppCompatActivity {
                 desertItemIncr++;
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
-                total+=3;
+                total+=2;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -120,7 +138,9 @@ public class MainActivity extends AppCompatActivity {
                 desertItemIncr--;
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
-                total-=3;
+                total-=2;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -130,7 +150,9 @@ public class MainActivity extends AppCompatActivity {
                 cookieItemIncr++;
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
-                total+=.50;
+                total+=1;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -140,7 +162,9 @@ public class MainActivity extends AppCompatActivity {
                 cookieItemIncr--;
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
-                total-=.50;
+                total-=1;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -150,7 +174,9 @@ public class MainActivity extends AppCompatActivity {
                 soupItemIncr++;
                 //outputTXT.setText(entree);
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
-                total+=2;
+                total+=3;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
@@ -160,19 +186,49 @@ public class MainActivity extends AppCompatActivity {
                 soupItemIncr--;
                 //outputTXT.setText(entree);
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
-                total-=2;
+                total-=3;
+                totalPriceDisTXT.setText(Integer.toString(total));
+
 
             }
         });
         resetBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                soupItemIncr--;
-                
+                onTrayIncr = 0;
+                total = 0;
+                rollItemIncr = 0;
+                soupItemIncr = 0;
+                mainTrayIncr = 0;
+                desertItemIncr = 0;
+                cookieItemIncr = 0;
+                totalPriceDisTXT.setText(Integer.toString(total));
+                soupItemDisTXT.setText(Integer.toString(soupItemIncr));
+                disChangeBackTXT.setText("");
+                cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
+                desertItemDisTxT.setText(Integer.toString(desertItemIncr));
+                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
+                onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                amountGivenTXT.setText("");
+
+
+
+
+
 
             }
         });
+        calcBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                //outputTXT.setText(entree);
 
+                disChangeBackTXT.setText(Double.toString(num1-total));
+
+            }
+        });
     }
 
 }
