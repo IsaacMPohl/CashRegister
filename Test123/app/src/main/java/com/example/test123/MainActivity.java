@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         Button soupItemDelBTN = findViewById(R.id.button5);
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
+        resetBTN.setVisibility((View.GONE));
+
 
 
         mainAddBTN.setOnClickListener(new View.OnClickListener() {
