@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +47,23 @@ public class MainActivity extends AppCompatActivity {
         Button soupItemDelBTN = findViewById(R.id.button5);
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
+        LinearLayout outPutCostLayout = findViewById(R.id.outPutCostLayout);
+        LinearLayout newOrderLayout = findViewById(R.id.newOrderLayout);
+        LinearLayout inputLayout = findViewById(R.id.inputLayout);
+        LinearLayout fieldDisplayLayout = findViewById(R.id.fieldDisplayLayout);
+        LinearLayout buttonLayout = findViewById(R.id.buttonLayout);
+
+
+        outPutCostLayout.setVisibility((View.GONE));
+        newOrderLayout.setVisibility((View.GONE));
         resetBTN.setVisibility((View.GONE));
+
+        inputLayout.setVisibility((View.VISIBLE));
+        fieldDisplayLayout.setVisibility((View.VISIBLE));
+        buttonLayout.setVisibility((View.VISIBLE));
+
+
+
 
 
 
@@ -57,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total+=8;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -69,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total-=8;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -81,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 total+=5;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -93,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 total-=5;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -105,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 total+=.5;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -117,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 total-=.5;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -129,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
                 total+=2;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -141,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
                 total-=2;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -153,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 total+=1;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -165,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 total-=1;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -177,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
                 total+=3;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -189,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
                 total-=3;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -204,15 +221,22 @@ public class MainActivity extends AppCompatActivity {
                 mainTrayIncr = 0;
                 desertItemIncr = 0;
                 cookieItemIncr = 0;
-                totalPriceDisTXT.setText(Double.toString(total));
+                totalPriceDisTXT.setText("$"+Double.toString(total));
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
-                disChangeBackTXT.setText("");
+                disChangeBackTXT.setText("$0.00");
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
-                amountGivenTXT.setText("");
+                amountGivenTXT.setText("0");
+                outPutCostLayout.setVisibility((View.GONE));
+                newOrderLayout.setVisibility((View.GONE));
+                resetBTN.setVisibility((View.GONE));
+
+                inputLayout.setVisibility((View.VISIBLE));
+                fieldDisplayLayout.setVisibility((View.VISIBLE));
+                buttonLayout.setVisibility((View.VISIBLE));
 
 
 
@@ -227,7 +251,14 @@ public class MainActivity extends AppCompatActivity {
                 double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
                 //outputTXT.setText(entree);
 
-                disChangeBackTXT.setText(Double.toString(num1-total));
+                disChangeBackTXT.setText("$"+Double.toString(num1-total));
+                outPutCostLayout.setVisibility((View.VISIBLE));
+                newOrderLayout.setVisibility((View.VISIBLE));
+                resetBTN.setVisibility((View.VISIBLE));
+
+                inputLayout.setVisibility((View.VISIBLE));
+                fieldDisplayLayout.setVisibility((View.VISIBLE));
+                buttonLayout.setVisibility((View.GONE));
 
             }
         });
