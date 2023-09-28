@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     int desertItemIncr = 0;
     int cookieItemIncr = 0 ;
     int soupItemIncr = 0;
-    int total = 0;
+    double total = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total+=8;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total-=8;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 total+=5;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 total-=5;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 total+=.5;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 total-=.5;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
                 total+=2;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
                 total-=2;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 total+=1;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 total-=1;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
                 total+=3;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
                 total-=3;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
 
 
             }
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 mainTrayIncr = 0;
                 desertItemIncr = 0;
                 cookieItemIncr = 0;
-                totalPriceDisTXT.setText(Integer.toString(total));
+                totalPriceDisTXT.setText(Double.toString(total));
                 soupItemDisTXT.setText(Integer.toString(soupItemIncr));
                 disChangeBackTXT.setText("");
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
