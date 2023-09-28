@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -259,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
                 inputLayout.setVisibility((View.VISIBLE));
                 fieldDisplayLayout.setVisibility((View.VISIBLE));
                 buttonLayout.setVisibility((View.GONE));
+                amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
 
             }
         });
