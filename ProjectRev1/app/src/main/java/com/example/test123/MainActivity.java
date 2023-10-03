@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         inputLayout.setVisibility((View.VISIBLE));
         fieldDisplayLayout.setVisibility((View.VISIBLE));
         mainButtonLayout.setVisibility((View.VISIBLE));
+        expandOptionsBTN.setText("More Options");
 
 
 
@@ -222,9 +223,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 if (buttonExraLayout.getVisibility() == View.GONE) {
                     buttonExraLayout.setVisibility((View.VISIBLE));
+                    expandOptionsBTN.setText("Collapse");
+                    mainButtonLayout.setVisibility((View.GONE));
+
                 }
                 else{
                     buttonExraLayout.setVisibility((View.GONE));
+                    expandOptionsBTN.setText("");
+                    expandOptionsBTN.setText("More Options");
+                    mainButtonLayout.setVisibility((View.VISIBLE));
+
+
 
                 }
 
@@ -285,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
                 buttonExraLayout.setVisibility((View.GONE));
                 amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
                 expandOptionsBTN.setVisibility(View.GONE);
+
 
             }
         });
