@@ -448,7 +448,7 @@
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:hint="Amount Given"
-                android:text="0"
+                android:text=""
                 android:textSize="25dp"/>
 
             <Button

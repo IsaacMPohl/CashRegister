@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
         mainAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -89,37 +88,40 @@ public class MainActivity extends AppCompatActivity {
         mainDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                mainTrayIncr--;
-                //outputTXT.setText(entree);
-                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
-                total-=8;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                if (mainTrayIncr>0) {
+                    mainTrayIncr--;
+                    //outputTXT.setText(entree);
+                    mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                    total -= 8;
+                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
-
+                }
             }
         });
         onTrayAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
+
                 onTrayIncr++;
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
-                total+=5;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
-
-
+                total += 5;
+                totalPriceDisTXT.setText("$" + Double.toString(total));
             }
+
         });
         onTrayDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                onTrayIncr--;
-                //outputTXT.setText(entree);
-                onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
-                total-=5;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                if (onTrayIncr>0) {
 
+                    onTrayIncr--;
+                    //outputTXT.setText(entree);
+                    onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
+                    total -= 5;
+                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
+                }
             }
         });
         rollItemAddBTN.setOnClickListener(new View.OnClickListener() {
@@ -137,13 +139,15 @@ public class MainActivity extends AppCompatActivity {
         rollItemDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                rollItemIncr--;
-                //outputTXT.setText(entree);
-                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
-                total-=.5;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                if (rollItemIncr>0) {
 
+                    rollItemIncr--;
+                    //outputTXT.setText(entree);
+                    rollitemDisTxt.setText(Integer.toString(rollItemIncr));
+                    total -= .5;
+                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
+                }
             }
         });
         desertItemAddBTN.setOnClickListener(new View.OnClickListener() {
@@ -161,23 +165,26 @@ public class MainActivity extends AppCompatActivity {
         desertItemDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                desertItemIncr--;
-                //outputTXT.setText(entree);
-                desertItemDisTxT.setText(Integer.toString(desertItemIncr));
-                total-=2;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                if (desertItemIncr>0) {
 
+                    desertItemIncr--;
+                    //outputTXT.setText(entree);
+                    desertItemDisTxT.setText(Integer.toString(desertItemIncr));
+                    total -= 2;
+                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
+                }
             }
         });
         cookieItemAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
+
                 cookieItemIncr++;
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
-                total+=1;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                total += 1;
+                totalPriceDisTXT.setText("$" + Double.toString(total));
 
 
             }
@@ -185,13 +192,15 @@ public class MainActivity extends AppCompatActivity {
         cookieItemDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                cookieItemIncr--;
-                //outputTXT.setText(entree);
-                cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
-                total-=1;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                if (cookieItemIncr>0) {
 
+                    cookieItemIncr--;
+                    //outputTXT.setText(entree);
+                    cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
+                    total -= 1;
+                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
+                }
             }
         });
         soupItemAddBTN.setOnClickListener(new View.OnClickListener() {
@@ -209,12 +218,14 @@ public class MainActivity extends AppCompatActivity {
         soupItemDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                soupItemIncr--;
-                //outputTXT.setText(entree);
-                soupItemDisTXT.setText(Integer.toString(soupItemIncr));
-                total-=3;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
+                if (soupItemIncr>0) {
 
+                    soupItemIncr--;
+                    //outputTXT.setText(entree);
+                    soupItemDisTXT.setText(Integer.toString(soupItemIncr));
+                    total -= 3;
+                    totalPriceDisTXT.setText("$" + Double.toString(total));
+                }
 
             }
         });
@@ -260,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 mainButtonLayout.setVisibility((View.VISIBLE));
-                amountGivenTXT.setText("0");
+                amountGivenTXT.setText("");
                 outPutCostLayout.setVisibility((View.GONE));
                 newOrderLayout.setVisibility((View.GONE));
                 resetBTN.setVisibility((View.GONE));
@@ -280,10 +291,18 @@ public class MainActivity extends AppCompatActivity {
         calcBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                //(!amountGivenTXT.equals(""))
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    disChangeBackTXT.setText("$"+Double.toString(num1-total));
+                }
+                catch (Exception e){
+                    disChangeBackTXT.setText("$"+Double.toString(-total));
+
+                }
+
                 //outputTXT.setText(entree);
 
-                disChangeBackTXT.setText("$"+Double.toString(num1-total));
                 outPutCostLayout.setVisibility((View.VISIBLE));
                 newOrderLayout.setVisibility((View.VISIBLE));
                 resetBTN.setVisibility((View.VISIBLE));
@@ -292,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
                 inputLayout.setVisibility((View.VISIBLE));
                 fieldDisplayLayout.setVisibility((View.VISIBLE));
                 buttonExraLayout.setVisibility((View.GONE));
-                amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
+                //amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
                 expandOptionsBTN.setVisibility(View.GONE);
 
 
