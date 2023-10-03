@@ -46,22 +46,27 @@ public class MainActivity extends AppCompatActivity {
         Button cookieItemDelBTN = findViewById(R.id.button4);
         Button soupItemAddBTN = findViewById(R.id.button2);
         Button soupItemDelBTN = findViewById(R.id.button5);
+        Button expandOptionsBTN = findViewById(R.id.expandOptionsBTN);
+
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
         LinearLayout outPutCostLayout = findViewById(R.id.outPutCostLayout);
         LinearLayout newOrderLayout = findViewById(R.id.newOrderLayout);
         LinearLayout inputLayout = findViewById(R.id.inputLayout);
         LinearLayout fieldDisplayLayout = findViewById(R.id.fieldDisplayLayout);
-        LinearLayout buttonLayout = findViewById(R.id.buttonLayout);
+        LinearLayout buttonExraLayout = findViewById(R.id.buttonExraLayout);
+        LinearLayout mainButtonLayout = findViewById(R.id.mainButtonLayout);
 
 
         outPutCostLayout.setVisibility((View.GONE));
         newOrderLayout.setVisibility((View.GONE));
         resetBTN.setVisibility((View.GONE));
+        buttonExraLayout.setVisibility((View.GONE));
+        expandOptionsBTN.setVisibility(View.VISIBLE);
 
         inputLayout.setVisibility((View.VISIBLE));
         fieldDisplayLayout.setVisibility((View.VISIBLE));
-        buttonLayout.setVisibility((View.VISIBLE));
+        mainButtonLayout.setVisibility((View.VISIBLE));
 
 
 
@@ -212,6 +217,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        expandOptionsBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                if (buttonExraLayout.getVisibility() == View.GONE) {
+                    buttonExraLayout.setVisibility((View.VISIBLE));
+                }
+                else{
+                    buttonExraLayout.setVisibility((View.GONE));
+
+                }
+
+
+
+            }
+        });
         resetBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -230,6 +250,7 @@ public class MainActivity extends AppCompatActivity {
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                mainButtonLayout.setVisibility((View.VISIBLE));
                 amountGivenTXT.setText("0");
                 outPutCostLayout.setVisibility((View.GONE));
                 newOrderLayout.setVisibility((View.GONE));
@@ -237,7 +258,8 @@ public class MainActivity extends AppCompatActivity {
 
                 inputLayout.setVisibility((View.VISIBLE));
                 fieldDisplayLayout.setVisibility((View.VISIBLE));
-                buttonLayout.setVisibility((View.VISIBLE));
+                buttonExraLayout.setVisibility((View.GONE));
+                expandOptionsBTN.setVisibility(View.VISIBLE);
 
 
 
@@ -256,11 +278,13 @@ public class MainActivity extends AppCompatActivity {
                 outPutCostLayout.setVisibility((View.VISIBLE));
                 newOrderLayout.setVisibility((View.VISIBLE));
                 resetBTN.setVisibility((View.VISIBLE));
+                mainButtonLayout.setVisibility((View.GONE));
 
                 inputLayout.setVisibility((View.VISIBLE));
                 fieldDisplayLayout.setVisibility((View.VISIBLE));
-                buttonLayout.setVisibility((View.GONE));
+                buttonExraLayout.setVisibility((View.GONE));
                 amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
+                expandOptionsBTN.setVisibility(View.GONE);
 
             }
         });

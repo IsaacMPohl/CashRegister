@@ -23,7 +23,7 @@
 
 
         <LinearLayout
-            android:id="@+id/item3"
+            android:id="@+id/mainButtonLayout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
@@ -82,12 +82,20 @@
                 android:textSize="25dp" />
 
         </LinearLayout>
+        <Button
+            android:id="@+id/expandOptionsBTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="More options" />
         <LinearLayout
-            android:id="@+id/buttonLayout"
+            android:id="@+id/buttonExraLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <LinearLayout
+
+
+
+            <LinearLayout
             android:id="@+id/item6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
