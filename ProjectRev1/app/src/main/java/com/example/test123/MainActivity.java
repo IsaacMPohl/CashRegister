@@ -204,6 +204,39 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        oneDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+
+
+            }
+        });
+        fiveDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+
+
+            }
+        });
+        tenDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+
+
+            }
+        });
+        twentyDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+
+
+            }
+        });
+
 
 
         expandOptionsBTN.setOnClickListener(new View.OnClickListener() {
