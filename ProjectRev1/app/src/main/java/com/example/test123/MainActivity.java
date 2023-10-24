@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         TextView rollitemDisTxt = findViewById(R.id.textView5);
         TextView desertItemDisTxT = findViewById(R.id.textView6);
         TextView cookieItemDisTxT = findViewById(R.id.textView14);
-        TextView soupItemDisTXT = findViewById(R.id.textView21);
         TextView totalPriceDisTXT = findViewById(R.id.textView2);
         TextView disChangeBackTXT = findViewById(R.id.textView7);
         EditText amountGivenTXT = findViewById(R.id.editTextText);
@@ -44,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         Button desertItemDelBTN = findViewById(R.id.button27);
         Button cookieItemAddBTN = findViewById(R.id.button3);
         Button cookieItemDelBTN = findViewById(R.id.button4);
-        Button soupItemAddBTN = findViewById(R.id.button2);
-        Button soupItemDelBTN = findViewById(R.id.button5);
         Button expandOptionsBTN = findViewById(R.id.expandOptionsBTN);
+        Button oneDollarAddBTN = findViewById(R.id.button8);
+        Button fiveDollarAddBTN = findViewById(R.id.button9);
+        Button tenDollarAddBTN = findViewById(R.id.button10);
+        Button twentyDollarAddBTN = findViewById(R.id.button11);
 
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 onTrayIncr++;
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
-                total += 5;
+                total += 3;
                 totalPriceDisTXT.setText("$" + Double.toString(total));
             }
 
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     onTrayIncr--;
                     //outputTXT.setText(entree);
                     onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
-                    total -= 5;
+                    total -= 3;
                     totalPriceDisTXT.setText("$" + Double.toString(total));
 
                 }
@@ -203,32 +204,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        soupItemAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                soupItemIncr++;
-                //outputTXT.setText(entree);
-                soupItemDisTXT.setText(Integer.toString(soupItemIncr));
-                total+=3;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
-            }
-        });
-        soupItemDelBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                if (soupItemIncr>0) {
-
-                    soupItemIncr--;
-                    //outputTXT.setText(entree);
-                    soupItemDisTXT.setText(Integer.toString(soupItemIncr));
-                    total -= 3;
-                    totalPriceDisTXT.setText("$" + Double.toString(total));
-                }
-
-            }
-        });
         expandOptionsBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -263,7 +240,6 @@ public class MainActivity extends AppCompatActivity {
                 desertItemIncr = 0;
                 cookieItemIncr = 0;
                 totalPriceDisTXT.setText("$"+Double.toString(total));
-                soupItemDisTXT.setText(Integer.toString(soupItemIncr));
                 disChangeBackTXT.setText("$0.00");
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 desertItemDisTxT.setText(Integer.toString(desertItemIncr));
@@ -311,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                 inputLayout.setVisibility((View.VISIBLE));
                 fieldDisplayLayout.setVisibility((View.VISIBLE));
                 buttonExraLayout.setVisibility((View.GONE));
-                //amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
+                amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
                 expandOptionsBTN.setVisibility(View.GONE);
 
 
