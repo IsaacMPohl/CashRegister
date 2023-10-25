@@ -207,7 +207,16 @@ public class MainActivity extends AppCompatActivity {
         oneDollarAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1++;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1++;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
 
 
             }
@@ -215,7 +224,16 @@ public class MainActivity extends AppCompatActivity {
         fiveDollarAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1+=5;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1+=5;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
 
 
             }
@@ -223,15 +241,32 @@ public class MainActivity extends AppCompatActivity {
         tenDollarAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-
-
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1+=10;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1+=10;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
 
             }
         });
         twentyDollarAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1+=20;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1+=20;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
 
 
             }
