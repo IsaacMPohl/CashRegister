@@ -8,16 +8,29 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-    int onTrayIncr = 0;
+    int entreeIncr = 0;
     int mainTrayIncr =0;
     int rollItemIncr = 0;
-    int desertItemIncr = 0;
+    int dessert_sideIncr = 0;
     int cookieItemIncr = 0 ;
     int soupItemIncr = 0;
     double total = 0.00;
+    private RequestQueue requestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         TextView totalPriceDisTXT = findViewById(R.id.textView2);
         TextView disChangeBackTXT = findViewById(R.id.textView7);
         EditText amountGivenTXT = findViewById(R.id.editTextText);
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
 
 
@@ -103,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                onTrayIncr++;
+                entreeIncr++;
                 //outputTXT.setText(entree);
-                onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
+                onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
                 total += 3;
                 totalPriceDisTXT.setText("$" + Double.toString(total));
             }
@@ -114,11 +128,11 @@ public class MainActivity extends AppCompatActivity {
         onTrayDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                if (onTrayIncr>0) {
+                if (entreeIncr >0) {
 
-                    onTrayIncr--;
+                    entreeIncr--;
                     //outputTXT.setText(entree);
-                    onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
+                    onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
                     total -= 3;
                     totalPriceDisTXT.setText("$" + Double.toString(total));
 
@@ -154,9 +168,9 @@ public class MainActivity extends AppCompatActivity {
         desertItemAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                desertItemIncr++;
+                dessert_sideIncr++;
                 //outputTXT.setText(entree);
-                desertItemDisTxT.setText(Integer.toString(desertItemIncr));
+                desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                 total+=2;
                 totalPriceDisTXT.setText("$"+Double.toString(total));
 
@@ -166,11 +180,11 @@ public class MainActivity extends AppCompatActivity {
         desertItemDelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                if (desertItemIncr>0) {
+                if (dessert_sideIncr >0) {
 
-                    desertItemIncr--;
+                    dessert_sideIncr--;
                     //outputTXT.setText(entree);
-                    desertItemDisTxT.setText(Integer.toString(desertItemIncr));
+                    desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                     total -= 2;
                     totalPriceDisTXT.setText("$" + Double.toString(total));
 
@@ -300,19 +314,19 @@ public class MainActivity extends AppCompatActivity {
         resetBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                onTrayIncr = 0;
+                entreeIncr = 0;
                 total = 0.00;
                 rollItemIncr = 0;
                 soupItemIncr = 0;
                 mainTrayIncr = 0;
-                desertItemIncr = 0;
+                dessert_sideIncr = 0;
                 cookieItemIncr = 0;
                 totalPriceDisTXT.setText("$"+Double.toString(total));
                 disChangeBackTXT.setText("$0.00");
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
-                desertItemDisTxT.setText(Integer.toString(desertItemIncr));
+                desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
-                onTrayItemDisTXT.setText(Integer.toString(onTrayIncr));
+                onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 mainButtonLayout.setVisibility((View.VISIBLE));
                 amountGivenTXT.setText("");
@@ -336,10 +350,72 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 //(!amountGivenTXT.equals(""))
-                try  {
+
+                try {
                     double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    disChangeBackTXT.setText("$"+Double.toString(num1-total));
+                    disChangeBackTXT.setText("$" + Double.toString(num1 - total));
+
+                    //String url = "http://172.16.1.230:8000/add_data";
+                    //String url = "http://10.60.4.30:8000/add_data";
+                    String url = "http://10.60.4.150:8000/add_data";
+
+                    HashMap<String, String> params = new HashMap<String, String>();
+
+                    params.put("meal", String.valueOf(mainTrayIncr));
+                    params.put("dessert_side", String.valueOf(dessert_sideIncr));
+                    params.put("entree", String.valueOf(entreeIncr));
+                    params.put("soup", String.valueOf(soupItemIncr));
+                    params.put("cookie", String.valueOf(cookieItemIncr));
+                    params.put("roll", String.valueOf(rollItemIncr));
+
+                    //Log.d("requestURL", url);
+
+
+                    //Log.d("registerUser", String.valueOf(params));
+/*
+                    JsonObjectRequest request = new JsonObjectRequest(url, new JSONObject(params),
+                            //Request.Method.POST,
+
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+
+                                    Toast.makeText(MainActivity.this,String.valueOf(response),Toast.LENGTH_SHORT).show();
+
+                                }
+                                // onResponse code
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error){
+                            Log.d("String to JSON", String.valueOf(error));
+                            Log.d("String to JSON", String.valueOf(params));
+                            Toast.makeText(MainActivity.this,String.valueOf(error),Toast.LENGTH_SHORT).show();
+
+
+                        }
+                        // onErrorResponse code
+                    });
+*/
+                    JsonObjectRequest r = new JsonObjectRequest(url, new JSONObject(params),
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    //Toast.makeText(MainActivity.this,"HURRRAAAAYYYYY",Toast.LENGTH_SHORT).show();
+                                    //Log.d("Adding data", String.valueOf(response));
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Log.d("String to JSON",error.toString());
+                            Toast.makeText(MainActivity.this,"Network error",Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                    requestQueue.add(r);
+
                 }
+
                 catch (Exception e){
                     disChangeBackTXT.setText("$"+Double.toString(-total));
 
