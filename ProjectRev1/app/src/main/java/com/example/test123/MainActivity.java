@@ -354,7 +354,12 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
                     disChangeBackTXT.setText("$" + Double.toString(num1 - total));
+                }
 
+                catch (Exception e){
+                    disChangeBackTXT.setText("$"+Double.toString(-total));
+
+                }
                     //String url = "http://172.16.1.230:8000/add_data";
                     //String url = "http://10.60.4.30:8000/add_data";
                     String url = "http://10.60.4.150:8000/add_data";
@@ -407,19 +412,14 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             //Log.d("String to JSON",error.toString());
-                            Toast.makeText(MainActivity.this,"Network error",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(MainActivity.this,"Network error",Toast.LENGTH_SHORT).show();
 
                         }
                     });
 
                     requestQueue.add(r);
 
-                }
 
-                catch (Exception e){
-                    disChangeBackTXT.setText("$"+Double.toString(-total));
-
-                }
 
                 //outputTXT.setText(entree);
 
