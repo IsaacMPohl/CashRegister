@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         Button cookieItemAddBTN = findViewById(R.id.button3);
         Button cookieItemDelBTN = findViewById(R.id.button4);
         Button expandOptionsBTN = findViewById(R.id.expandOptionsBTN);
-        Button oneDollarAddBTN = findViewById(R.id.button8);
-        Button fiveDollarAddBTN = findViewById(R.id.button9);
-        Button tenDollarAddBTN = findViewById(R.id.button10);
-        Button twentyDollarAddBTN = findViewById(R.id.button11);
+        ImageButton oneDollarAddBTN = findViewById(R.id.simpleImageButton1);
+        ImageButton fiveDollarAddBTN = findViewById(R.id.simpleImageButton2);
+        ImageButton tenDollarAddBTN = findViewById(R.id.simpleImageButton3);
+        ImageButton twentyDollarAddBTN = findViewById(R.id.simpleImageButton4);
 
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
