@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         Button cookieItemAddBTN = findViewById(R.id.button3);
         Button cookieItemDelBTN = findViewById(R.id.button4);
         Button expandOptionsBTN = findViewById(R.id.expandOptionsBTN);
-        ImageButton oneDollarAddBTN = findViewById(R.id.simpleImageButton1);
-        ImageButton fiveDollarAddBTN = findViewById(R.id.simpleImageButton2);
-        ImageButton tenDollarAddBTN = findViewById(R.id.simpleImageButton3);
-        ImageButton twentyDollarAddBTN = findViewById(R.id.simpleImageButton4);
+        Button oneDollarAddBTN = findViewById(R.id.button7);
+        Button fiveDollarAddBTN = findViewById(R.id.button9);
+        Button tenDollarAddBTN = findViewById(R.id.button2);
+        Button twentyDollarAddBTN = findViewById(R.id.button5);
 
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
