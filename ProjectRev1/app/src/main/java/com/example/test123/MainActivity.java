@@ -7,12 +7,16 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,10 +62,13 @@ public class MainActivity extends AppCompatActivity {
         Button cookieItemAddBTN = findViewById(R.id.button3);
         Button cookieItemDelBTN = findViewById(R.id.button4);
         Button expandOptionsBTN = findViewById(R.id.expandOptionsBTN);
-        Button oneDollarAddBTN = findViewById(R.id.button8);
+        Button oneDollarAddBTN = findViewById(R.id.button7);
         Button fiveDollarAddBTN = findViewById(R.id.button9);
-        Button tenDollarAddBTN = findViewById(R.id.button10);
-        Button twentyDollarAddBTN = findViewById(R.id.button11);
+        Button tenDollarAddBTN = findViewById(R.id.button2);
+        Button twentyDollarAddBTN = findViewById(R.id.button5);
+        Button fityDollarAddBTN = findViewById(R.id.button8);
+        Button hundredDollarAddBTN = findViewById(R.id.button16);
+        Button exactDollarAddBTN = findViewById(R.id.button18);
 
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
@@ -285,8 +292,51 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
+        fityDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1+=50;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1+=50;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+            }
+        });
+        hundredDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1+=100;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1+=100;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+            }
+        });
+        exactDollarAddBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                try  {
+                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
+                    num1=total;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+                catch (Exception e){
+                    double num1=0;
+                    num1+=total;
+                    amountGivenTXT.setText(Double.toString(num1));
+                }
+            }
+        });
 
         expandOptionsBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -377,30 +427,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                     //Log.d("registerUser", String.valueOf(params));
-/*
-                    JsonObjectRequest request = new JsonObjectRequest(url, new JSONObject(params),
-                            //Request.Method.POST,
 
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
+                /*
 
-                                    Toast.makeText(MainActivity.this,String.valueOf(response),Toast.LENGTH_SHORT).show();
-
-                                }
-                                // onResponse code
-                            }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error){
-                            Log.d("String to JSON", String.valueOf(error));
-                            Log.d("String to JSON", String.valueOf(params));
-                            Toast.makeText(MainActivity.this,String.valueOf(error),Toast.LENGTH_SHORT).show();
-
-
-                        }
-                        // onErrorResponse code
-                    });
-*/
                     JsonObjectRequest r = new JsonObjectRequest(url, new JSONObject(params),
                             new Response.Listener<JSONObject>() {
                                 @Override
@@ -412,13 +441,44 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             //Log.d("String to JSON",error.toString());
-                            //Toast.makeText(MainActivity.this,"Network error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"t" + error,Toast.LENGTH_SHORT).show();
 
                         }
                     });
 
-                    requestQueue.add(r);
 
+
+
+                    requestQueue.add(r);
+                    */
+                StringRequest request = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Handle the response
+                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // Handle the error
+                                Toast.makeText(MainActivity.this, "Contact Mr. Bander (Computer Science Room): " + error.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }) {
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        // Convert the HashMap to a JSON string
+                        return new JSONObject(params).toString().getBytes();
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json";
+                    }
+                };
+
+                requestQueue.add(request);
 
 
                 //outputTXT.setText(entree);
